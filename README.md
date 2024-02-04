@@ -1,30 +1,58 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Profile Saver
 
-Currently, two official plugins are available:
+This is a simple desktop application to manage and store discord profiles, so that you may retrieve and reuse them.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+## Features
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+- Familar and simple UI inspired by discord
+- Import your current profile directly with discord API
+- Create entirely unique profiles locally, no need to use discord.
+- Manage all your profiles easily by using collections.
+- Quickly retrieve past profiles colors, about me, banner image, and avatar image
+- Supports both pngs and gifs
+- No need to sign into discord
+- Privacy conscious by storing all profile data locally
+- Fast, beautiful, and easy to use
+
+
+## Installation
+
+Download and run the latest installer from [Releases](https://github.com/TheRealSavi/ProfileSaver/releases) 
+
+or
+
+Build and run locally with npm
+
+```bash
+  git clone https://github.com/TheRealSavi/ProfileSaver.git
+  cd ProfileSaver
+  npm install
+
+  npm run electron:dev //developer mode
+  npm run app:build //compile binaries
+
 ```
+    
+## Tech Stack
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+**Client:** React, TailwindCSS, Framer-Motion, Polished, TypeScript
+
+**Server:** NodeJS, Electron, Electron-builder, Vite
+
+Programmed using secure practices and ES6 syntax.
+## Authors
+
+- [John Gibbons](https://www.github.com/TheRealSavi)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+![Logo](https://raw.githubusercontent.com/TheRealSavi/ProfileSaver/master/src/assets/icon.ico)
+
