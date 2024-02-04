@@ -1,0 +1,75 @@
+{
+  "name": "profilesaver",
+  "private": true,
+  "version": "1.0.1",
+  "author": "John Gibbons",
+  "description": "Saves your discord profiles",
+  "type": "module",
+  "main": "electron/electron.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "start": "electron .",
+    "electron": "wait-on tcp:3000 && cross-env IS_DEV=true electron .",
+    "electron:pack": "electron-builder --dir",
+    "electron:dev": "concurrently -k \"cross-env BROWSER=none npm run dev\" \"npm run electron\"",
+    "electron:builder": "electron-builder",
+    "build:for:electron": "tsc --noEmit && cross-env ELECTRON=true vite build",
+    "app:build": "npm run build:for:electron && npm run electron:builder"
+  },
+  "dependencies": {
+    "@simonwep/pickr": "^1.9.0",
+    "concurrently": "^8.2.2",
+    "cross-env": "^7.0.3",
+    "framer-motion": "^11.0.3",
+    "polished": "^4.2.2",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.12.0",
+    "tinycolor2": "^1.6.0",
+    "wait-on": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.43",
+    "@types/react-color": "^3.0.11",
+    "@types/react-dom": "^18.2.17",
+    "@types/tinycolor2": "^1.4.6",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.16",
+    "electron": "^28.1.1",
+    "electron-builder": "^24.9.1",
+    "eslint": "^8.55.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  },
+  "build": {
+    "appId": "com.savi.profilesaver",
+    "productName": "Profile Saver",
+    "copyright": "Copyright © 2023 ${John Gibbons}",
+    "win": {
+      "icon": "./src/assets/icon.ico"
+    },
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "./src/assets",
+      "output": "dist_electron"
+    }
+  }
+}
