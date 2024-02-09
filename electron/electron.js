@@ -54,6 +54,16 @@ app.on("activate", () => {
   }
 });
 
+ipcMain.handle("open-github-repo", () => {
+  shell.openExternal("https://github.com/TheRealSavi/ProfileSaver");
+});
+
+ipcMain.handle("open-yt", () => {
+  shell.openExternal(
+    "https://www.youtube.com/channel/UCK-rzIpYZiYwGZH9kkeXywA"
+  );
+});
+
 ipcMain.handle("open-discord-portal", () => {
   shell.openExternal("https://discord.com/developers/applications");
 });

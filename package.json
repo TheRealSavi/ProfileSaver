@@ -1,7 +1,7 @@
 {
   "name": "profilesaver",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "John Gibbons",
   "description": "Saves your discord profiles",
   "type": "module",

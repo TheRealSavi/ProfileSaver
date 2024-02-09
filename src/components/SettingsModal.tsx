@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { LuRefreshCw } from "react-icons/lu";
 import { UserSettings } from "../types";
+import About from "./About";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface CNFModalProps {
   handleDismal: (arg0: boolean) => void;
@@ -9,6 +11,7 @@ interface CNFModalProps {
 
 const SettingsModal = (props: CNFModalProps) => {
   const [settings, setSettings] = useState<UserSettings>();
+  const [showAbout, setShowAbout] = useState(false);
 
   useEffect(() => {
     getSettings();
@@ -40,6 +43,17 @@ const SettingsModal = (props: CNFModalProps) => {
         </button>
       </div>
       <hr className="border-t-2 border-gray-500 my-3" />
+      <div className="flex justify-center">
+        <button
+          className="p-2 pl-4 pr-4 flex items-center justify-between text-white hover:bg-[#2e86af] bg-[#4c7dbd]  font-semibold text-base rounded-md transition-all duration-200"
+          onClick={() => {
+            setShowAbout(true);
+          }}
+        >
+          App Info
+        </button>
+      </div>
+
       <h1 className="text-gray-300 text-sm font-bold pt-2 pb-1">
         Default Import User ID
       </h1>
@@ -95,6 +109,23 @@ const SettingsModal = (props: CNFModalProps) => {
           Save
         </button>
       </div>
+      <AnimatePresence>
+        {showAbout && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            key={"aboutbg"}
+            className="fixed top-0 left-0 w-screen h-screen flex place-items-center justify-center backdrop-blur-lg"
+          >
+            <About
+              onClose={() => {
+                setShowAbout(false);
+              }}
+            ></About>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
