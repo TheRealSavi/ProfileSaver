@@ -228,6 +228,7 @@ const ProfileCard = (props: ProfileCardProps) => {
           )}
           {showingCollModal && props.card.getImagesFromID && showingDetails && (
             <motion.div
+              key={"coll-det-" + props.card.getImagesFromID}
               className="z-50"
               initial={{ y: "-50%" }}
               animate={{ y: 0 }}
