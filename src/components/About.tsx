@@ -41,7 +41,7 @@ const About = (props: aboutProps) => {
             </button>
           </div>
 
-          <p className="text-base font-semibold text-gray-400">v1.0.2</p>
+          <p className="text-base font-semibold text-gray-400">v1.0.3</p>
           <p className="text-xs fixed bottom-2 p-2 text-gray-400 italic">
             "You have power over your mind — not outside events. Realize this,
             and you will find strength." - Marcus Aurelius
