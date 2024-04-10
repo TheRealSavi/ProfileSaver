@@ -17,7 +17,7 @@ const CardInfo = (props: CardInfoProps) => {
 
   const sendToClipboard = async (
     text: string,
-    setGlyph: React.Dispatch<any>
+    setGlyph: React.Dispatch<React.SetStateAction<JSX.Element>>
   ) => {
     const returnGlyph = () => {
       setGlyph(<LuClipboardCopy />);
