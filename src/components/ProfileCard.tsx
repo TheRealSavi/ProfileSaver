@@ -22,6 +22,11 @@ interface ProfileCardProps {
   onDelete?: () => void;
 }
 
+interface APIResponseType {
+  avatar: string;
+  banner: string;
+}
+
 const ProfileCard = (props: ProfileCardProps) => {
   const gradientStops = `${props.card.primaryColor || "#000000"}, ${
     props.card.accentColor || "#000000"
@@ -48,7 +53,7 @@ const ProfileCard = (props: ProfileCardProps) => {
     props.card.bannerUrl || bannerImg
   );
 
-  const handleResult = async (result: any) => {
+  const handleResult = async (result: APIResponseType) => {
     if (result.banner) {
       const burl = await window.electronAPI.invoke(
         "read-file-as-data-url",
@@ -66,19 +71,18 @@ const ProfileCard = (props: ProfileCardProps) => {
   };
 
   useEffect(() => {
-    setAvatarUrl(props.card.avatarUrl ? props.card.avatarUrl : avatarUrl);
-    setBannerUrl(props.card.bannerUrl ? props.card.bannerUrl : bannerUrl);
-  }, [props]);
+    props.card.avatarUrl && setAvatarUrl(props.card.avatarUrl);
+    props.card.bannerUrl && setBannerUrl(props.card.bannerUrl);
+  }, [props.card.avatarUrl, props.card.bannerUrl]);
 
   useEffect(() => {
-    if (props.card.getImagesFromID != undefined) {
+    props.card.getImagesFromID &&
       window.electronAPI
         .invoke("get-saveid-images", props.card.getImagesFromID)
         .then((result) => {
           handleResult(result);
         });
-    }
-  }, []);
+  }, [props.card.getImagesFromID]);
 
   return (
     <div className="flex z-10">
@@ -167,14 +171,19 @@ const ProfileCard = (props: ProfileCardProps) => {
                       : "mt-1 text-xs text-gray-300"
                   }
                 >
-                  {props.card.aboutMe?.split("\n").map((line, index) => (
-                    <div key={index}>
-                      <p className="break-all">{line}</p>
-                    </div>
-                  ))}
+                  {props.card.aboutMe?.split("\n").map((line, index) => {
+                    if (line == "") line = " "; //preserves empty lines
+                    return (
+                      <div key={index} style={{ whiteSpace: "preserve" }}>
+                        <p className="break-all">{line}</p>
+                      </div>
+                    );
+                  })}
                 </div>
 
-                <h2 className="text-xs font-bold mt-3">DISCORD MEMBER SINCE</h2>
+                <h2 className="text-xs font-bold mt-3">
+                  DISCORD PROFILE SINCE
+                </h2>
                 <p
                   className={
                     brightMode
