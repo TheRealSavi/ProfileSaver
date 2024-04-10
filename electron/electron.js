@@ -81,7 +81,7 @@ ipcMain.handle("copy-to-clipboard", async (_, text) => {
 ipcMain.handle("create-collection", (_, collectionObj) => {
   try {
     // Ensure the collectionObj has a profiles field initialized to an empty array
-    if (!collectionObj.hasOwnProperty("profiles")) {
+    if (!Object.prototype.hasOwnProperty.call(collectionObj, "profiles")) {
       collectionObj.profiles = [];
     }
 
@@ -232,16 +232,13 @@ const getNextSavePath = (basePath) => {
     fs.mkdirSync(basePath, { recursive: true });
   }
 
-  let i = 0;
-  while (true) {
+  for (let i = 0; ; i++) {
     const folderPath = path.join(basePath, i.toString());
 
     if (!fs.existsSync(folderPath)) {
       fs.mkdirSync(folderPath, { recursive: true });
       return i.toString();
     }
-
-    i++;
   }
 };
 
@@ -504,7 +501,7 @@ ipcMain.handle("save-image", (_, id, imageUrl, fileName) => {
   } else {
     // Regular URL handling
     const file = fs.createWriteStream(savePath);
-    const request = https
+    https
       .get(imageUrl, (response) => {
         response.pipe(file);
         file.on("finish", () => {
