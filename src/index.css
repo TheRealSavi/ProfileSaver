@@ -14,6 +14,14 @@
   }
 }
 
+.card {
+  backdrop-filter: blur(20px) saturate(80%);
+  -webkit-backdrop-filter: blur(20px) saturate(80%);
+  background-color: rgba(17, 25, 40, 0.92);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+
 .animated {
   opacity: 0;
   transform: translateY(-20px);

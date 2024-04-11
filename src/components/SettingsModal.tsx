@@ -116,7 +116,7 @@ const SettingsModal = (props: CNFModalProps) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             key={"aboutbg"}
-            className="fixed top-0 left-0 w-screen h-screen flex place-items-center justify-center backdrop-blur-lg"
+            className="absolute top-0 left-0 w-screen h-screen flex place-items-center justify-center backdrop-blur-sm"
           >
             <About
               onClose={() => {
