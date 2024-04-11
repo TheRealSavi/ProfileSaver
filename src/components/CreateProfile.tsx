@@ -233,7 +233,7 @@ const CreateProfile = (props: CreateNewProps) => {
           />
         )}
 
-        <div className="absolute left-0 bottom-8 flex place-content-center w-full pointer-events-none">
+        <div className="absolute z-50 left-0 bottom-8 flex place-content-center w-full pointer-events-none">
           <div
             className={
               profileData.avatarUrl != avatarImg
